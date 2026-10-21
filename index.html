@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Archemists - AI Automation Solutions</title>
+  <link rel="icon" type="image/png" href="assets/favicon-32x32.png" />
+  <link rel="icon" type="image/png" href="assets/favicon-192x192.png" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="Arc_style.css" />
+  <style>
+  
+    /* Modal animasi */
+    #form-modal .modal-container {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 0.3s ease;
+    }
+    #form-modal.show .modal-container {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Lock body scroll */
+    body.overflow-hidden {
+      position: fixed;
+      width: 100%;
+      overflow: hidden;
+      left: 0;
+    }
+
+    /* Loader */
+    .loader {
+      border-radius: 50%;
+      border: 4px solid #ff1476;
+      border-top: 4px solid transparent;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Fade in untuk fallback */
+    .fade-in {
+      animation: fadeIn 0.3s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Hover effects */
+    .schedule-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 640px) {
+      .modal-container {
+        height: 95vh;
+        margin: 2.5vh 10px;
+      }
+    }
+
+    /* Iframe fit */
+    .iframe-container {
+      height: 100%;
+      overflow: hidden;
+    }
+  </style>
+  
+<!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3PB2CK61H"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y3PB2CK61H');
+    </script>
+    
+<!-- Affiliate Tracking -->
+    <script type="text/javascript">
+         (function() {
+             var t = document.createElement("script");
+             t.type = "text/javascript", t.async = !0, t.src = 'https://info.the-archemists.com/js/am.js', t.onload = t.onreadystatechange = function() {
+                 var t = this.readyState;
+                 if (!t || "complete" == t || "loaded" == t) try {
+                     affiliateManager.init('XeyMsfKJnWt71ST2M1zL', 'https://backend.leadconnectorhq.com', '.the-archemists.com')
+                     
+                 } catch (t) {}
+                 
+             };
+             var e = document.getElementsByTagName("script")[0];
+             e.parentNode.insertBefore(t, e)
+             
+         })();
+    </script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+  <nav class="header-container">
+    <a href="/" class="logo">
+      <img src="assets/Arc_logo2.png" alt="The Archemists Logo" />
+    </a>
+
+    <ul class="nav-links" id="mobileNav">
+     <li><a href="#services" onclick="handleMobileNavClick(event)">Services</a></li>
+     <li><a href="#about" onclick="handleMobileNavClick(event)">About Us</a></li>
+     <li><a href="#contact" onclick="handleMobileNavClick(event)">Contact Us</a></li>
+    </ul>
+
+    <button class="mobile-menu" onclick="toggleMobileMenu()">
+      <img src="assets/menu.png" alt="menu-icon" class="w-6 h-6" />
+    </button>
+  </nav>
+</header>
+
+<!-- Tombol Bubble Chat -->
+<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6ad722adf56fd8562e80d3da"></script>
+
+<!-- form -->
+<!-- Modal -->
+  <div 
+    id="form-modal" 
+    class="fixed inset-0 bg-black bg-opacity-60 z-[1001] hidden flex items-center justify-center p-2 sm:p-4"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title">
+    
+  </div>
+  
+  <script>
+
+// Slideshow 
+  document.addEventListener("DOMContentLoaded", function () {
+    let currentSlide = 0;
+    const slides = document.querySelectorAll("#slideshow .slide");
+
+    if (slides.length > 0) {
+      slides.forEach((slide, index) => {
+        slide.style.opacity = index === 0 ? '1' : '0';
+        slide.style.zIndex = index === 0 ? '10' : '0';
+      });
+
+      setInterval(function () {
+        slides[currentSlide].style.opacity = "0";
+        slides[currentSlide].style.zIndex = "0";
+
+        currentSlide = (currentSlide + 1) % slides.length;
+
+        slides[currentSlide].style.opacity = "1";
+        slides[currentSlide].style.zIndex = "10";
+      }, 4000);
+    }
+  });
+</script>
+
+<!-- JavaScript -->
+
+<script>
+  function scrollToSection(id) {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+
+      // Hilangkan fragment (#services) dari URL
+      history.pushState("", document.title, window.location.pathname + window.location.search);
+    }
+  }
+</script>
+
+<script>
+  window.addEventListener("load", () => {
+    const hash = window.location.hash;
+    if (hash && document.querySelector(hash)) {
+      document.querySelector(hash).scrollIntoView({ behavior: "smooth" });
+
+      // Hapus # dari URL setelah scroll
+      setTimeout(() => {
+        history.replaceState(null, null, window.location.pathname);
+      }, 400);
+    }
+  });
+</script>
+
+<script>
+  function toggleMobileMenu() {
+    const navLinks = document.getElementById('mobileNav');
+    navLinks.classList.toggle('active');
+  }
+
+  function handleMobileNavClick(event) {
+    event.preventDefault(); // Mencegah default jump
+    const navLinks = document.getElementById('mobileNav');
+    navLinks.classList.remove('active'); // Sembunyikan menu
+
+    const targetId = event.target.getAttribute('href');
+    const target = document.querySelector(targetId);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+
+      // Hilangkan hash dari URL
+      setTimeout(() => {
+        history.replaceState(null, null, window.location.pathname);
+      }, 400);
+    }
+  }
+
+  // Jika halaman dibuka langsung dengan hash (misalnya /#contact)
+  window.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash;
+    if (hash && document.querySelector(hash)) {
+      document.querySelector(hash).scrollIntoView({ behavior: 'smooth' });
+
+      setTimeout(() => {
+        history.replaceState(null, null, window.location.pathname);
+      }, 400);
+    }
+  });
+</script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+   <script src="script.js"></script>
+</body>
+</html>
